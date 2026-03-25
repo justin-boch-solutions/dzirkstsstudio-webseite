@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap');
+
+/* High-End Dark & Neon Theme */
+:root {
+    --bg-dark: #050505;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --accent-1: #4361ee; /* Electric Blue */
+    --accent-2: #f72585; /* Neon Pink */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Subtiler Glow im Hintergrund */
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(67, 97, 238, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(247, 37, 133, 0.15), transparent 25%);
+    background-attachment: fixed;
+}
+
+/* Weiche Einblend-Animationen */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 20px rgba(67, 97, 238, 0.5); }
+    50% { text-shadow: 0 0 40px rgba(247, 37, 133, 0.5); }
+    100% { text-shadow: 0 0 20px rgba(67, 97, 238, 0.5); }
+}
+
+/* Glassmorphism Navigation */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-main);
+}
+
+/* Hero Section (Startseite) */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+h1 span {
+    background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 4s infinite alternate;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 18px 40px;
+    background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(247, 37, 133, 0.4);
+}
+
+/* Sektionen Allgemein */
+section {
+    padding: 120px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+h2 span {
+    color: var(--accent-1);
+}
+
+/* Glassmorphism Cards (Für Portfolio & Leistungen) */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease;
+}
+
+.card:hover img {
+    filter: grayscale(0%);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 1px solid var(--glass-border);
+    margin-top: auto;
+    color: var(--text-muted);
+}
