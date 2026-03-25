@@ -2,13 +2,13 @@
 
 /* High-End Dark & Neon Theme */
 :root {
-    --bg-dark: #050505;
-    --text-main: #ffffff;
-    --text-muted: #888888;
-    --accent-1: #4361ee; /* Electric Blue */
-    --accent-2: #f72585; /* Neon Pink */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --bg-dark: #fdfaf6;       /* Dein neues Beige */
+    --text-main: #1a1a1a;     /* Dunkle Schrift */
+    --text-muted: #666666;    /* Graue Schrift für Details */
+    --accent-1: #c4a484;      /* Ein schönes, warmes Bronze/Braun statt Blau */
+    --accent-2: #8b5e3c;      /* Ein tieferes Braun statt Pink */
+    --glass-bg: rgba(0, 0, 0, 0.03); /* Ganz zarter dunkler Schatten für Glas-Effekt */
+    --glass-border: rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -19,14 +19,14 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
+    background-color: #fdfaf6; /* Ein edles, helles und warmes Beige (Linen) */
+    color: #1a1a1a;           /* Fast Schwarz für perfekten Kontrast */
     line-height: 1.6;
     overflow-x: hidden;
-    /* Subtiler Glow im Hintergrund */
+    /* Subtiler, warmer Lichtschein statt Neon-Glow */
     background-image: 
-        radial-gradient(circle at 15% 50%, rgba(67, 97, 238, 0.15), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(247, 37, 133, 0.15), transparent 25%);
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(245, 230, 210, 0.5), transparent 50%);
     background-attachment: fixed;
 }
 
