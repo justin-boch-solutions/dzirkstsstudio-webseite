@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leistungen | dzirkstsstudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -22,89 +23,96 @@
     </header>
 
     <main>
-        <section style="text-align: center; padding-top: 100px; padding-bottom: 50px;">
-            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Unsere <span>Expertise.</span></h1>
-            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text-muted);">
+        <section style="padding-top: 150px; padding-bottom: 50px; text-align: center;">
+            <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-1); font-weight: 700; margin-bottom: 15px;">Services</p>
+            <h1 style="font-size: 4rem; line-height: 1.1; margin-bottom: 30px;">Unsere <span class="text-gradient">Expertise.</span></h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
                 Wir bieten keine Standard-Pakete. Wir liefern maßgeschneiderte visuelle Lösungen und Performance-Marketing, das deine Konkurrenz alt aussehen lässt.
             </p>
         </section>
 
+        <!-- Service 1 -->
         <section style="max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center;">
+            <div class="split-layout">
                 <div>
-                    <span style="font-size: 1.2rem; font-weight: 800; color: var(--text-muted); letter-spacing: 2px;">01</span>
-                    <h2 style="font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; text-align: left;">High-End <br><span>Fotografie</span></h2>
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--accent-1); letter-spacing: 2px;">01.</span>
+                    <h2 style="font-size: 3rem; margin-top: 10px; margin-bottom: 20px; line-height: 1.1;">High-End <br><span>Fotografie</span></h2>
                     <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
                         Der erste Eindruck entscheidet. Egal ob aussagekräftige Business-Portraits, emotionale Event-Reportagen oder gestochen scharfe Produktfotografie: Wir fangen die Essenz deiner Marke ein.
                     </p>
-                    <ul style="list-style: none; margin-bottom: 30px;">
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Marken- & Business-Shootings</li>
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Produkt- & E-Commerce Fotografie</li>
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Professionelle High-End Retusche</li>
+                    <ul style="list-style: none; margin-bottom: 40px; font-size: 1.1rem;">
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Marken- & Business-Shootings</li>
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Produkt- & E-Commerce Fotografie</li>
+                        <li style="margin-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Professionelle High-End Retusche</li>
                     </ul>
-                    <p style="font-weight: bold; color: var(--accent-1); margin-bottom: 20px;">Individuelle Kalkulation nach Aufwand</p>
-                    <a href="mailto:hallo@dzirkstsstudio.de?subject=Anfrage Fotografie" class="btn" style="padding: 12px 30px;">Shooting anfragen</a>
+                    <a href="mailto:hallo@dzirkstsstudio.de?subject=Anfrage Fotografie" class="btn">Shooting anfragen</a>
                 </div>
-                <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); aspect-ratio: 4/5;">
-                    <img src="https://images.unsplash.com/photo-1554046920-90dcac471c26?auto=format&fit=crop&q=80&w=1000" alt="Professionelle Kamera" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div class="split-image" style="aspect-ratio: 4/5;">
+                    <img src="https://images.unsplash.com/photo-1554046920-90dcac471c26?auto=format&fit=crop&q=80&w=1000" alt="Professionelle Kamera">
                 </div>
             </div>
         </section>
 
+        <!-- Service 2 -->
         <section style="max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center;">
-                <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); aspect-ratio: 4/5;">
-                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1000" alt="Social Media Ads auf dem Smartphone" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <div class="split-layout">
+                <div class="split-image" style="aspect-ratio: 4/5; order: -1;">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1000" alt="Social Media Ads auf dem Smartphone">
                 </div>
                 <div>
-                    <span style="font-size: 1.2rem; font-weight: 800; color: var(--text-muted); letter-spacing: 2px;">02</span>
-                    <h2 style="font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; text-align: left;">Performance <br><span>Ads</span></h2>
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--accent-1); letter-spacing: 2px;">02.</span>
+                    <h2 style="font-size: 3rem; margin-top: 10px; margin-bottom: 20px; line-height: 1.1;">Performance <br><span>Ads</span></h2>
                     <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
                         Sichtbarkeit bringt nichts ohne Klicks. Wir schalten zielgenaue Werbekampagnen auf Meta (Instagram/Facebook) und TikTok, die exakt deine Traumkunden ansprechen und deinen Umsatz skalieren.
                     </p>
-                    <ul style="list-style: none; margin-bottom: 30px;">
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Zielgruppen- & Konkurrenzanalyse</li>
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Meta & TikTok Ads Setup</li>
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Kontinuierliches A/B-Testing & Skalierung</li>
+                    <ul style="list-style: none; margin-bottom: 40px; font-size: 1.1rem;">
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Zielgruppen- & Konkurrenzanalyse</li>
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Meta & TikTok Ads Setup</li>
+                        <li style="margin-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Kontinuierliches A/B-Testing</li>
                     </ul>
-                    <p style="font-weight: bold; color: var(--accent-1); margin-bottom: 20px;">Ab 800€ monatliches Ad-Budget</p>
-                    <a href="mailto:hallo@dzirkstsstudio.de?subject=Anfrage Social Media Ads" class="btn" style="padding: 12px 30px;">Ads skalieren</a>
+                    <a href="mailto:hallo@dzirkstsstudio.de?subject=Anfrage Social Media Ads" class="btn">Ads skalieren</a>
                 </div>
             </div>
         </section>
 
+        <!-- Service 3 -->
         <section style="max-width: 1200px; margin: 0 auto 100px; padding: 0 20px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center;">
+            <div class="split-layout">
                 <div>
-                    <span style="font-size: 1.2rem; font-weight: 800; color: var(--text-muted); letter-spacing: 2px;">03</span>
-                    <h2 style="font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; text-align: left;">Content <br><span>Creation</span></h2>
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--accent-1); letter-spacing: 2px;">03.</span>
+                    <h2 style="font-size: 3rem; margin-top: 10px; margin-bottom: 20px; line-height: 1.1;">Content <br><span>Creation</span></h2>
                     <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
                         Die Algorithmen sind hungrig. Wir füttern sie. Von der Konzeption bis zum fertigen Reel produzieren wir den Content, der deine Community wachsen lässt und echtes Engagement erzeugt.
                     </p>
-                    <ul style="list-style: none; margin-bottom: 30px;">
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Short-Form Video (Reels & TikToks)</li>
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Feed-Design & Copywriting</li>
-                        <li style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">✓ Redaktionsplanung & Posting</li>
+                    <ul style="list-style: none; margin-bottom: 40px; font-size: 1.1rem;">
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Short-Form Video (Reels & TikToks)</li>
+                        <li style="margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Feed-Design & Copywriting</li>
+                        <li style="margin-bottom: 15px; display: flex; gap: 15px;"><span style="color: var(--accent-1);">✦</span> Redaktionsplanung & Posting</li>
                     </ul>
-                    <p style="font-weight: bold; color: var(--accent-1); margin-bottom: 20px;">Monatliche Retainer-Pakete verfügbar</p>
-                    <a href="mailto:hallo@dzirkstsstudio.de?subject=Anfrage Content Creation" class="btn" style="padding: 12px 30px;">Content planen</a>
+                    <a href="mailto:hallo@dzirkstsstudio.de?subject=Anfrage Content Creation" class="btn">Content planen</a>
                 </div>
-                <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); aspect-ratio: 4/5;">
-                    <img src="https://images.unsplash.com/photo-1588681664505-3b6b107e3cb7?auto=format&fit=crop&q=80&w=1000" alt="Content Creation und Video Edit" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                <div class="split-image" style="aspect-ratio: 4/5;">
+                    <img src="https://images.unsplash.com/photo-1588681664505-3b6b107e3cb7?auto=format&fit=crop&q=80&w=1000" alt="Content Creation und Video Edit">
                 </div>
             </div>
         </section>
 
-        <section style="text-align: center; padding: 100px 20px; background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(196, 164, 132, 0.1) 100%); border-radius: 30px; max-width: 1200px; margin: 0 auto 100px;">
-            <h2 style="margin-bottom: 20px;">Unschlüssig, was du brauchst?</h2>
-            <p style="max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.1rem;">
-                Wir schnüren dir ein Paket, das exakt auf deine Ziele zugeschnitten ist. Lass uns einfach kurz telefonieren.
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <h2>Unschlüssig, was du brauchst?</h2>
+            <p>
+                Wir schnüren dir ein Paket, das exakt auf deine Ziele zugeschnitten ist. Lass uns einfach kurz telefonieren. Keine Verpflichtungen.
             </p>
-            <a href="mailto:hallo@dzirkstsstudio.de" class="btn" style="padding: 20px 50px; font-size: 1.2rem;">Lass uns sprechen</a>
+            <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Lass uns sprechen</a>
         </section>
     </main>
 
     <footer>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">LinkedIn</a>
+        </div>
         <p>&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten.</p>
     </footer>
 

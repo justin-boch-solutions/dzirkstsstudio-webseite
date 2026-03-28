@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | dzirkstsstudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,24 +21,62 @@
         </nav>
     </header>
     <main>
-        <section>
-            <h2>Mein <span>Portfolio</span></h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="img/portfolio/bild1.jpg" alt="Portrait Shoot">
-                    <h3>Portrait Shoot</h3>
+        <section style="padding-top: 150px; padding-bottom: 50px; text-align: center;">
+            <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-1); font-weight: 700; margin-bottom: 15px;">Selected Work</p>
+            <h1 style="font-size: 4rem; line-height: 1.1; margin-bottom: 30px;">Unser <span class="text-gradient">Portfolio.</span></h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+                Ein kuratierter Einblick in erfolgreiche Kampagnen und Shootings. Bilder, die herausstechen. Strategien, die performen.
+            </p>
+        </section>
+
+        <!-- PORTFOLIO GRID -->
+        <section id="portfolio-grid" style="padding-top: 0;">
+            <div class="portfolio-showcase">
+                <div class="portfolio-item">
+                    <img src="img/portfolio/bild1.jpg" onerror="this.src='https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000';" alt="Portrait Shoot">
+                    <div class="portfolio-overlay">
+                        <p>People & Lifestyle</p>
+                        <h4>Portrait Shoot</h4>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="img/portfolio/bild2.jpg" alt="Ad Kampagne">
-                    <h3>Ad Kampagne</h3>
+                <div class="portfolio-item">
+                    <img src="img/portfolio/bild2.jpg" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000';" alt="Ad Kampagne">
+                    <div class="portfolio-overlay">
+                        <p>Social Media Performance</p>
+                        <h4>Ad Kampagne</h4>
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="img/portfolio/bild3.jpg" alt="Produktfotografie">
-                    <h3>Produktfotografie</h3>
+                <div class="portfolio-item">
+                    <img src="img/portfolio/bild3.jpg" onerror="this.src='https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1000';" alt="Produktfotografie">
+                    <div class="portfolio-overlay">
+                        <p>E-Commerce</p>
+                        <h4>Produktfotografie</h4>
+                    </div>
                 </div>
+                <!-- Additional Demo Item for even grid -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?w=800&q=80" alt="Fashion Campaign">
+                    <div class="portfolio-overlay">
+                        <p>Brand Identity</p>
+                        <h4>Fashion Lookbook</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 80px;">
+                <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;">Bereit, dein eigenes Projekt hier zu sehen?</p>
+                <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Lass uns arbeiten</a>
             </div>
         </section>
     </main>
-    <footer><p>&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten.</p></footer>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        <p>&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
