@@ -597,6 +597,43 @@ footer {
     font-size: 0.85rem;
 }
 
+/* Logo Bar */
+.logo-bar {
+    background: var(--bg-main);
+    padding: 30px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.logo-bar svg {
+    height: 25px;
+    fill: var(--text-muted);
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+.logo-bar svg:hover {
+    fill: var(--text-main);
+    transform: scale(1.1);
+}
+
+.footer-social-svgs {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.footer-social-svgs svg {
+    height: 24px;
+    fill: #aaaaaa;
+    transition: fill 0.3s ease;
+}
+.footer-social-svgs a:hover svg {
+    fill: var(--accent-1);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .bento-grid { grid-template-columns: repeat(2, 1fr); }
