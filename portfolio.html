@@ -4,79 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | dzirkstsstudio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Modern Premium Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">dzirksts<span>studio</span></a>
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 180 30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 30L10 0H20L10 30H0Z" fill="var(--accent-red)"/>
+                    <path d="M15 30L25 0H35L25 30H15Z" fill="var(--accent-1)"/>
+                    <text x="45" y="24" font-family="Outfit, sans-serif" font-style="italic" font-weight="900" font-size="24" fill="var(--text-main)" letter-spacing="-1">dzirksts<tspan fill="var(--accent-1)">studio</tspan></text>
+                </svg>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Start</a></li>
                 <li><a href="leistungen.html">Leistungen</a></li>
                 <li><a href="portfolio.html" class="active">Portfolio</a></li>
                 <li><a href="ueber-mich.html">Über mich</a></li>
-                <li><a href="blog.html">News</a></li>
+                <li><a href="blog.html">Paddock</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <section style="padding-top: 150px; padding-bottom: 50px; text-align: center;">
-            <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-1); font-weight: 700; margin-bottom: 15px;">Selected Work</p>
-            <h1 style="font-size: 4rem; line-height: 1.1; margin-bottom: 30px;">Unser <span class="text-gradient">Portfolio.</span></h1>
+            <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-red); font-weight: 800; font-style: italic; margin-bottom: 15px;">Selected Track-Records</p>
+            <h1 style="font-size: 5rem; letter-spacing: -2px; font-weight: 900; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase; font-style: italic;">Unser <span class="text-gradient">Portfolio.</span></h1>
             <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-                Ein kuratierter Einblick in erfolgreiche Kampagnen und Shootings. Bilder, die herausstechen. Strategien, die performen.
+                Ein kuratierter Einblick hinter die Kulissen. Brandings, Automotive-Shootings und Kampagnen, die auf den digitalen Plattformen Bestzeiten gefahren sind.
             </p>
         </section>
 
-        <!-- PORTFOLIO GRID -->
-        <section id="portfolio-grid" style="padding-top: 0;">
-            <div class="portfolio-showcase">
+        <!-- PORTFOLIO GRID EXTENDED -->
+        <section id="portfolio-grid" style="padding-top: 0; max-width: 1400px; margin: 0 auto;">
+            <div class="portfolio-showcase" style="grid-template-columns: repeat(2, 1fr);">
+                <!-- Item 1 -->
                 <div class="portfolio-item">
-                    <img src="img/portfolio/bild1.jpg" onerror="this.src='https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000';" alt="Portrait Shoot">
+                    <img src="https://images.unsplash.com/photo-1503376713356-cc9d3fbc173b?q=80&w=1000&auto=format&fit=crop" alt="Classic Porsche">
                     <div class="portfolio-overlay">
-                        <p>People & Lifestyle</p>
-                        <h4>Portrait Shoot</h4>
+                        <p>Vintage Automotive</p>
+                        <h4>Project 911 Heritage</h4>
                     </div>
                 </div>
+                <!-- Item 2 -->
                 <div class="portfolio-item">
-                    <img src="img/portfolio/bild2.jpg" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000';" alt="Ad Kampagne">
+                    <img src="https://images.unsplash.com/photo-1563714192663-ba3915bc6bbd?q=80&w=1000&auto=format&fit=crop" alt="Track Racing">
                     <div class="portfolio-overlay">
-                        <p>Social Media Performance</p>
-                        <h4>Ad Kampagne</h4>
+                        <p>Event Coverage</p>
+                        <h4>Apex Trackdays</h4>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="img/portfolio/bild3.jpg" onerror="this.src='https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1000';" alt="Produktfotografie">
+                <!-- Item 3 Large -->
+                <div class="portfolio-item" style="grid-column: span 2; aspect-ratio: 21/9;">
+                    <img src="https://images.unsplash.com/photo-1582255330368-4a942a170701?q=80&w=1600&auto=format&fit=crop" alt="Night Pitlane">
                     <div class="portfolio-overlay">
-                        <p>E-Commerce</p>
-                        <h4>Produktfotografie</h4>
+                        <p>Campaign & Performance Marketing</p>
+                        <h4>Midnight Racers Collection</h4>
                     </div>
                 </div>
-                <!-- Additional Demo Item for even grid -->
+                <!-- Item 4 -->
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1618244972963-dbee1a7edc95?w=800&q=80" alt="Fashion Campaign">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?q=80&w=1000&auto=format&fit=crop" alt="Carbon Detail">
                     <div class="portfolio-overlay">
-                        <p>Brand Identity</p>
-                        <h4>Fashion Lookbook</h4>
+                        <p>Product Photography</p>
+                        <h4>Carbon Fiber Dynamics</h4>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1521404620023-e40bc84d5dfd?q=80&w=1000&auto=format&fit=crop" alt="Driver Helmet">
+                    <div class="portfolio-overlay">
+                        <p>Brand Storytelling</p>
+                        <h4>The Drivers Perspective</h4>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1552084117-56a98a9464e8?q=80&w=1000&auto=format&fit=crop" alt="Drifting">
+                    <div class="portfolio-overlay">
+                        <p>TikTok Content Creation</p>
+                        <h4>Tuning Expo 2025</h4>
+                    </div>
+                </div>
+                <!-- Item 7 -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1000&auto=format&fit=crop" alt="Mustang">
+                    <div class="portfolio-overlay">
+                        <p>Social Media Ads</p>
+                        <h4>Muscle Car Parts Shop</h4>
                     </div>
                 </div>
             </div>
             
             <div class="text-center" style="margin-top: 80px;">
                 <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px;">Bereit, dein eigenes Projekt hier zu sehen?</p>
-                <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Lass uns arbeiten</a>
+                <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Start the Engine</a>
             </div>
         </section>
     </main>
     
     <footer>
-        <div class="social-links">
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
-            <a href="#">LinkedIn</a>
+        <div class="footer-inner">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 180 30" xmlns="http://www.w3.org/2000/svg" style="fill: #ffffff;">
+                    <path d="M0 30L10 0H20L10 30H0Z" fill="var(--accent-red)"/>
+                    <path d="M15 30L25 0H35L25 30H15Z" fill="var(--accent-1)"/>
+                    <text x="45" y="24" font-family="Outfit, sans-serif" font-style="italic" font-weight="900" font-size="24" fill="#ffffff" letter-spacing="-1">dzirksts<tspan fill="var(--accent-1)">studio</tspan></text>
+                </svg>
+            </a>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten. Built for Speed.</p>
         </div>
-        <p>&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten.</p>
     </footer>
 </body>
 </html>

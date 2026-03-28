@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Über mich | dzirkstsstudio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">dzirksts<span>studio</span></a>
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 180 30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 30L10 0H20L10 30H0Z" fill="var(--accent-red)"/>
+                    <path d="M15 30L25 0H35L25 30H15Z" fill="var(--accent-1)"/>
+                    <text x="45" y="24" font-family="Outfit, sans-serif" font-style="italic" font-weight="900" font-size="24" fill="var(--text-main)" letter-spacing="-1">dzirksts<tspan fill="var(--accent-1)">studio</tspan></text>
+                </svg>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Start</a></li>
                 <li><a href="leistungen.html">Leistungen</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="ueber-mich.html" class="active">Über mich</a></li>
-                <li><a href="blog.html">News</a></li>
+                <li><a href="blog.html">Paddock</a></li>
             </ul>
         </nav>
     </header>
@@ -24,22 +30,25 @@
         <section style="padding-top: 150px; padding-bottom: 50px;">
             <div class="split-layout" style="align-items: flex-start;">
                 <div class="split-text">
-                    <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-1); font-weight: 700; margin-bottom: 10px;">The Founder</p>
-                    <h2 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 30px;">Wer steckt eigentlich hinter <br><span class="text-gradient">dzirkstsstudio?</span></h2>
+                    <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--accent-red); font-weight: 800; margin-bottom: 10px; font-style: italic;">The Driver Behind The Lens</p>
+                    <h2 style="font-size: 4rem; text-transform: uppercase; font-style: italic; font-weight: 900; line-height: 1.1; margin-bottom: 30px;">Benzin im Blut. <br><span class="text-gradient">Fokus im Blick.</span></h2>
                     
                     <p style="font-size: 1.2rem; margin-bottom: 20px;">
-                        Hi! Ich bin der kreative Kopf von dzirkstsstudio. Meine größte Leidenschaft ist es, durch die Linse Geschichten zu erzählen und diese dann über Social Media exakt den Leuten zu zeigen, die sie sehen müssen.
+                        Hi! Ich bin der Antrieb hinter dzirkstsstudio. Meine größte Leidenschaft? Der Motorsport. Genau diese Energie, dieser Drang nach Perfektion und Schnelligkeit fließt in jede meiner Produktionen ein.
+                    </p>
+                    
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                        Viele Fotografen schießen im Stand. Ich bevorzuge Bewegung. Egal ob an der Rennstrecke, im Automobil-Studio oder beim Skalieren von Ad-Budgets im Meta Werbemanager – mein Ziel ist es, Marken nicht nur sichtbar, sondern spürbar zu machen.
                     </p>
                     
                     <p style="font-size: 1.2rem; margin-bottom: 40px;">
-                        Mit jahrelanger Erfahrung hinter der Kamera und im Meta Werbemanager biete ich das Komplettpaket für Marken, die echten Impact erzielen und rasant wachsen wollen – ohne Umwege über unzählige Agenturen.
+                        Mit dem perfekten Mix aus visuellem Storytelling und datengetriebener Performance biete ich Automotive- und Lifestyle-Brands das Setup, um auf den digitalen Plattformen die Pole-Position zu übernehmen.
                     </p>
                     
-                    <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Schreib mir eine Mail</a>
+                    <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Start the Engine</a>
                 </div>
-                <div class="split-image" style="aspect-ratio: 3/4;">
-                    <!-- Placeholder, falls kein Bild vorhanden ist -->
-                    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000&auto=format&fit=crop" alt="Fotograf">
+                <div class="split-image" style="aspect-ratio: 3/4; border-bottom: 5px solid var(--accent-red);">
+                    <img src="https://images.unsplash.com/photo-1518049362265-f5b2812228db?q=80&w=1000&auto=format&fit=crop" alt="Motorsport Fotograf">
                 </div>
             </div>
         </section>
@@ -48,19 +57,32 @@
         <section class="cta-section">
             <h2>Bereit für das nächste Level?</h2>
             <p>
-                Lass uns über deine Marke sprechen. Kostenloses Erstgespräch, keine Verpflichtungen. Wir analysieren deinen aktuellen Auftritt und zeigen dir Skalierungspotenziale.
+                Lass uns über deine Marke sprechen. Kostenloses Erstgespräch, keine Verpflichtungen. Wir analysieren deinen aktuellen Auftritt und besprechen die Telemetrie deiner nächsten Kampagne.
             </p>
             <a href="mailto:hallo@dzirkstsstudio.de" class="btn">Projekt starten</a>
         </section>
     </main>
     
     <footer>
-        <div class="social-links">
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
-            <a href="#">LinkedIn</a>
+        <div class="footer-inner">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 180 30" xmlns="http://www.w3.org/2000/svg" style="fill: #ffffff;">
+                    <path d="M0 30L10 0H20L10 30H0Z" fill="var(--accent-red)"/>
+                    <path d="M15 30L25 0H35L25 30H15Z" fill="var(--accent-1)"/>
+                    <text x="45" y="24" font-family="Outfit, sans-serif" font-style="italic" font-weight="900" font-size="24" fill="#ffffff" letter-spacing="-1">dzirksts<tspan fill="var(--accent-1)">studio</tspan></text>
+                </svg>
+            </a>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten. Built for Speed.</p>
         </div>
-        <p>&copy; 2026 dzirkstsstudio. Alle Rechte vorbehalten.</p>
     </footer>
 </body>
 </html>
