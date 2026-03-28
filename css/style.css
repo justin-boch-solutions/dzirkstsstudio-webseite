@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&display=swap');
 
-/* High-End Automotive Premium Theme */
+/* High-End Premium Theme */
 :root {
     --bg-main: #fcf9f5;       /* Sehr edles, helles Beige */
     --bg-secondary: #f3efe8;  /* Etwas dunkleres Beige für Sektionen */
@@ -8,10 +8,10 @@
     --text-muted: #555555;    /* Graue Schrift für Details */
     --accent-1: #c4a484;      /* Warmes Bronze/Beige (Heritage Automotive) */
     --accent-2: #8b5e3c;      /* Tiefes Braun */
-    --accent-red: #d90429;    /* Neu: Racing Red für Motorsport Akzente */
-    --carbon-dark: #121212;   /* Neu: Carbon Black für Sektionen */
+    --accent-red: #d90429;    /* Racing Red für dynamische Akzente */
+    --carbon-dark: #1a1a1a;   /* Carbon Black (leicht heller für Eleganz) */
     --accent-glow: rgba(196, 164, 132, 0.4);
-    --red-glow: rgba(217, 4, 41, 0.3);
+    --red-glow: rgba(217, 4, 41, 0.2);
     --glass-bg: rgba(255, 255, 255, 0.6);
     --glass-border: rgba(255, 255, 255, 0.8);
     --dark-bg: var(--carbon-dark);
@@ -36,16 +36,6 @@ body {
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideLeft {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideRight {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes marquee {
@@ -89,7 +79,7 @@ nav {
     transition: transform 0.3s ease;
 }
 .logo-svg:hover {
-    transform: scale(1.05) skewX(-2deg);
+    transform: scale(1.02);
 }
 
 .nav-links {
@@ -114,7 +104,7 @@ nav {
     position: absolute;
     width: 0%;
     height: 2px;
-    background: var(--accent-red); /* Racing Red Underline */
+    background: var(--accent-1); /* Wieder klassisches Bronze */
     bottom: -4px;
     left: 0;
     transition: width 0.3s ease;
@@ -144,16 +134,16 @@ nav {
 .mb-2 { margin-bottom: 2rem; }
 .mb-4 { margin-bottom: 4rem; }
 
-/* Buttons */
+/* Buttons (Eleganter & Moderner) */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 45px;
+    padding: 16px 40px;
     background: var(--carbon-dark);
-    color: #fff;
+    color: #fff !important;
     text-decoration: none;
-    border-radius: 4px; /* Motorsport Blocky Design statt ganz rund */
+    border-radius: 4px; 
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
@@ -164,15 +154,13 @@ nav {
     overflow: hidden;
     position: relative;
     z-index: 1;
-    transform: skewX(-5deg); /* Racing Forward Leaning */
 }
-.btn span { transform: skewX(5deg); display: block; } /* Text begradigen */
 
 .btn::before {
     content: "";
     position: absolute;
     top: 0; left: -10%; width: 120%; height: 100%;
-    background: linear-gradient(90deg, var(--accent-red), #ff4d6d);
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
     z-index: -1;
     transition: transform 0.4s ease;
     transform: scaleX(0);
@@ -180,7 +168,7 @@ nav {
 }
 
 .btn:hover {
-    box-shadow: 0 15px 30px rgba(217, 4, 41, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     border-color: transparent;
 }
 
@@ -190,8 +178,11 @@ nav {
 
 .btn-outline {
     background: transparent;
-    color: var(--text-main);
+    color: var(--text-main) !important;
     border: 2px solid var(--text-main);
+}
+.btn-outline:hover {
+    color: #fff !important;
 }
 
 /* Hero Section */
@@ -207,38 +198,13 @@ nav {
     overflow: hidden;
 }
 
-.hero-blob-1 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%);
-    top: -100px;
-    right: -100px;
-    border-radius: 50%;
-    z-index: -1;
-    animation: blobMotion 15s infinite alternate ease-in-out;
-}
-
-.hero-blob-2 {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(196, 164, 132, 0.3) 0%, transparent 70%);
-    bottom: 100px;
-    left: -150px;
-    border-radius: 50%;
-    z-index: -1;
-    animation: blobMotion 20s infinite alternate-reverse ease-in-out;
-}
-
 .hero h1 {
-    font-size: clamp(3.5rem, 8vw, 8rem);
-    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 800;
     line-height: 1.05;
     margin-bottom: 25px;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
     text-transform: uppercase;
-    font-style: italic; /* Speed aesthetic */
     animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
@@ -263,19 +229,18 @@ nav {
 .marquee-wrapper {
     width: 100%;
     overflow: hidden;
-    background: var(--carbon-dark); /* Carbon contrast */
+    background: var(--carbon-dark); 
     color: #fff;
-    padding: 30px 0;
-    transform: rotate(-3deg) scale(1.05); /* Aggressiverer Winkel */
+    padding: 25px 0;
     margin: 40px 0 100px;
-    border-top: 4px solid var(--accent-red);
-    border-bottom: 4px solid var(--accent-red);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .marquee-content {
     display: flex;
-    width: 200%;
-    animation: marquee 20s linear infinite; /* Etwas schneller für Motorsport Vibe */
+    width: 400%;
+    animation: marquee 35s linear infinite; 
 }
 
 .marquee-item {
@@ -283,17 +248,16 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     white-space: nowrap;
-    font-style: italic;
 }
 .marquee-item span {
-    color: var(--accent-red);
-    font-size: 2rem;
-    margin: 0 15px;
+    color: var(--accent-1);
+    font-size: 1.5rem;
+    margin: 0 20px;
 }
 
 /* Base Sections */
@@ -311,7 +275,7 @@ section {
 
 .section-header h2 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: -1px;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -333,11 +297,10 @@ section {
 }
 
 .split-text h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-bottom: 25px;
-    line-height: 1.1;
-    font-weight: 900;
-    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: 800;
 }
 
 .split-text p {
@@ -348,9 +311,9 @@ section {
 
 .split-image {
     position: relative;
-    border-radius: 4px; /* kantiger für Motorsport */
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 20px 20px 0px var(--accent-red); /* Brutaler Racing Schatten */
+    box-shadow: 20px 20px 0px var(--accent-1); 
     transition: transform 0.5s ease;
 }
 
@@ -362,7 +325,7 @@ section {
     transition: transform 0.7s ease;
 }
 
-.split-image:hover { transform: translate(-10px, -10px); box-shadow: 30px 30px 0px var(--accent-red); }
+.split-image:hover { transform: translate(-5px, -5px); box-shadow: 25px 25px 0px var(--accent-1); }
 
 /* Bento Grid */
 .bento-grid {
@@ -375,8 +338,8 @@ section {
 .bento-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-left: 4px solid var(--accent-1); /* Heritage Akzent */
-    border-radius: 8px; /* weniger rund */
+    border-top: 4px solid var(--accent-1); 
+    border-radius: 8px; 
     padding: 40px;
     transition: all 0.4s ease;
     backdrop-filter: blur(20px);
@@ -386,15 +349,14 @@ section {
 }
 
 .bento-card:hover {
-    transform: translateY(-5px) skewX(-2deg); /* Racing hover */
-    box-shadow: 0 20px 40px rgba(217, 4, 41, 0.15);
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
     background: #ffffff;
-    border-left-color: var(--accent-red);
 }
 
 .bento-card .icon {
     font-size: 2.5rem;
-    color: var(--accent-red);
+    color: var(--accent-1);
     margin-bottom: 20px;
 }
 
@@ -421,7 +383,6 @@ section {
 .bento-dark {
     background: var(--carbon-dark);
     color: var(--bg-main);
-    border-left-color: var(--accent-red);
 }
 .bento-dark p { color: #cccccc; }
 .bento-dark .icon { color: var(--accent-1); }
@@ -447,7 +408,7 @@ section {
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s;
-    filter: grayscale(40%) contrast(1.1); /* Grittier look */
+    filter: brightness(0.9);
 }
 
 .portfolio-overlay {
@@ -460,12 +421,12 @@ section {
     justify-content: flex-end;
     opacity: 0;
     transition: opacity 0.4s ease;
-    border-bottom: 5px solid var(--accent-red);
+    border-bottom: 5px solid var(--accent-1);
 }
 
 .portfolio-item:hover img {
     transform: scale(1.05);
-    filter: grayscale(0%) contrast(1.1);
+    filter: brightness(1.05);
 }
 
 .portfolio-item:hover .portfolio-overlay {
@@ -476,15 +437,13 @@ section {
     color: #fff;
     font-size: 1.8rem;
     font-weight: 800;
-    text-transform: uppercase;
     margin-bottom: 5px;
     transform: translateY(20px);
     transition: transform 0.4s ease;
-    font-style: italic;
 }
 
 .portfolio-overlay p {
-    color: var(--accent-red);
+    color: var(--accent-1);
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -507,8 +466,6 @@ section {
     text-align: center;
     margin: 100px auto;
     max-width: 1200px;
-    position: relative;
-    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 10px); /* Carbon texture hint */
 }
 
 .testimonial-card {
@@ -518,19 +475,18 @@ section {
 
 .quote-icon {
     font-size: 4rem;
-    color: var(--accent-red);
+    color: var(--accent-1);
     opacity: 0.8;
     line-height: 1;
     margin-bottom: 20px;
-    font-style: italic;
 }
 
 .testimonial-text {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 1.8rem;
+    font-weight: 400;
     font-style: italic;
     margin-bottom: 30px;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .testimonial-author {
@@ -558,27 +514,16 @@ section {
     position: relative;
     overflow: hidden;
     color: #fff;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-    border-top: 5px solid var(--accent-red);
-}
-
-.cta-section::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(217, 4, 41, 0.2) 0%, transparent 50%);
-    animation: blobMotion 20s infinite linear;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
 }
 
 .cta-section h2 {
-    font-size: 4rem;
-    font-weight: 900;
+    font-size: 3.5rem;
+    font-weight: 800;
     margin-bottom: 20px;
     position: relative;
     z-index: 1;
     color: #fff;
-    text-transform: uppercase;
-    font-style: italic;
 }
 
 .cta-section p {
@@ -591,16 +536,17 @@ section {
 }
 
 .cta-section .btn {
-    background: var(--accent-red);
-    color: #fff;
+    background: var(--accent-1);
+    color: var(--carbon-dark) !important;
     border: none;
     font-size: 1.1rem;
     padding: 20px 50px;
 }
 
 .cta-section .btn::before {
-    background: #ff4d6d;
+    background: var(--accent-2);
 }
+.cta-section .btn:hover { color: #fff !important; }
 
 /* Footer */
 footer {
@@ -637,7 +583,7 @@ footer {
 }
 
 .social-links a:hover, .footer-legal a:hover {
-    color: var(--accent-red);
+    color: var(--accent-1);
 }
 
 .footer-legal {
@@ -659,7 +605,7 @@ footer {
 
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .hero h1 { font-size: 3.5rem; }
+    .hero h1 { font-size: 3rem; }
     .hero-btns { flex-direction: column; }
     .split-layout { grid-template-columns: 1fr; }
     .split-image { order: -1; }
