@@ -13,9 +13,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Dzirksts Studio | B2B Media & Recruiting",
-  description: "Hochwertiges Social Media Management, Mitarbeitergewinnung und Eventfotografie für Unternehmen.",
+  title: "Dzirksts Studio | Fotografie, Social Media & Elektrotechnik",
+  description:
+    "Dzirksts Studio in Lettland – Social Media Management, Fotografie und Elektrotechnik unter einem Dach.",
 };
+
+import { LanguageProvider } from "@/context/LanguageContext";
+import HtmlLang from "@/components/HtmlLang";
 
 export default function RootLayout({
   children,
@@ -27,8 +31,11 @@ export default function RootLayout({
       lang="de"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-accent selection:text-white">
-        {children}
+      <body className="min-h-full flex flex-col text-foreground overflow-x-hidden selection:bg-accent-warm selection:text-white">
+        <LanguageProvider>
+          <HtmlLang />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -3,15 +3,24 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: #111111;
+  --color-surface-light: var(--surface-light);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-darker: var(--surface-darker);
+  --color-accent-warm: var(--accent-warm);
+  --color-accent-cool: var(--accent-cool);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-plus-jakarta);
 }
 
 @layer base {
   :root {
-    --background: #a6a6a6; /* Grau aus der originalen SVG */
-    --foreground: #111111; /* Dunkler Text für Kontrast */
+    --background: #a6a6a6;
+    --foreground: #111111;
+    --surface-light: #d4d4d4;
+    --surface-dark: #2c2c2c;
+    --surface-darker: #161616;
+    --accent-warm: #f59e0b;
+    --accent-cool: #38bdf8;
   }
 }
 
@@ -28,10 +37,57 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), sans-serif;
 }
 
-/* Glassmorphism utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+.section-light {
+  background: linear-gradient(165deg, var(--surface-light) 0%, var(--background) 100%);
+  color: var(--foreground);
+}
+
+.section-dark {
+  background: linear-gradient(160deg, var(--surface-darker) 0%, var(--surface-dark) 100%);
+  color: #f5f5f5;
+}
+
+.section-warm {
+  background: linear-gradient(135deg, #c9b89a 0%, var(--background) 55%, #b8a088 100%);
+  color: var(--foreground);
+}
+
+.section-cool {
+  background: linear-gradient(135deg, #8ba3b8 0%, var(--background) 50%, #7a96ad 100%);
+  color: var(--foreground);
+}
+
+.section-dark .text-muted {
+  color: rgba(245, 245, 245, 0.65);
+}
+
+.text-muted {
+  color: rgba(17, 17, 17, 0.65);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-panel-dark {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes shimmer-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  animation: shimmer-line 3s infinite;
 }
