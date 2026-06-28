@@ -4,7 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Globe, Menu, X } from "lucide-react";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { useLanguage } from "@/context/LanguageContext";
+import { siteConfig } from "@/lib/config";
 import type { SiteArea } from "@/lib/config";
 
 interface HeaderProps {
@@ -21,12 +23,17 @@ export default function Header({ area = "gateway" }: HeaderProps) {
     setLangOpen(false);
   };
 
+  const gatewayLinks = [
+    { href: "/agentur", label: t("gateway.card.media.title") },
+    { href: "/elektro", label: t("gateway.card.elektro.title") },
+  ];
+
   const areaLinks =
     area === "agentur"
       ? [
           { href: "#leistungen", label: t("nav.services") },
           { href: "#ablauf", label: t("nav.process") },
-          { href: "#ueber-mich", label: t("nav.about") },
+          { href: "#insights", label: t("nav.insights") },
           { href: "#kontakt", label: t("nav.contact") },
         ]
       : area === "elektro"
@@ -34,7 +41,14 @@ export default function Header({ area = "gateway" }: HeaderProps) {
             { href: "#leistungen", label: t("nav.services") },
             { href: "#kontakt", label: t("nav.contact") },
           ]
-        : [];
+        : gatewayLinks;
+
+  const contactHref =
+    area === "gateway"
+      ? `mailto:${siteConfig.email}`
+      : area === "agentur"
+        ? "/agentur#kontakt"
+        : "/elektro#kontakt";
 
   const accentBar =
     area === "agentur"
@@ -46,8 +60,8 @@ export default function Header({ area = "gateway" }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-panel-dark border-b border-white/10">
       <div className={`h-1 w-full ${accentBar}`} />
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between py-3 md:py-4">
-        <Link href="/" className="flex items-center gap-4 md:gap-5 group min-w-0">
+      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-4 py-3 md:py-4">
+        <Link href="/" className="flex items-center gap-3 md:gap-5 group min-w-0">
           <Image
             src="/logo.svg"
             alt="Dzirksts Studio Logo"
@@ -67,12 +81,9 @@ export default function Header({ area = "gateway" }: HeaderProps) {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-white/80">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-white/80">
           {area !== "gateway" && (
-            <Link
-              href="/"
-              className="text-sm font-medium hover:text-white transition-colors"
-            >
+            <Link href="/" className="text-sm font-medium hover:text-white transition-colors">
               {t("nav.back")}
             </Link>
           )}
@@ -80,11 +91,21 @@ export default function Header({ area = "gateway" }: HeaderProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium hover:text-white transition-colors"
+              className="text-sm font-medium hover:text-white transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
           ))}
+
+          <a
+            href={siteConfig.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            <InstagramIcon size={18} />
+          </a>
 
           <div className="relative border-l border-white/15 pl-5">
             <button
@@ -108,9 +129,28 @@ export default function Header({ area = "gateway" }: HeaderProps) {
               </div>
             )}
           </div>
+
+          <Link
+            href={contactHref}
+            className={`text-sm font-bold px-5 py-2.5 rounded-full transition-transform hover:scale-105 whitespace-nowrap ${
+              area === "elektro"
+                ? "bg-accent-cool text-surface-darker"
+                : area === "agentur"
+                  ? "bg-accent-warm text-foreground"
+                  : "bg-white text-foreground"
+            }`}
+          >
+            {t("nav.cta")}
+          </Link>
         </nav>
 
-        <div className="md:hidden flex items-center gap-2 text-white/80">
+        <div className="lg:hidden flex items-center gap-2 text-white/80">
+          <Link
+            href={contactHref}
+            className="text-xs font-bold px-3 py-1.5 rounded-full bg-white/15 border border-white/20"
+          >
+            {t("nav.cta")}
+          </Link>
           <button
             onClick={() =>
               handleLangChange(
@@ -122,28 +162,32 @@ export default function Header({ area = "gateway" }: HeaderProps) {
             <Globe size={14} />
             {language}
           </button>
-          {area !== "gateway" && (
-            <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2">
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          )}
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2">
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
-      {mobileOpen && area !== "gateway" && (
-        <div className="md:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4 bg-surface-darker text-white">
-          <Link href="/" onClick={() => setMobileOpen(false)}>
-            {t("nav.back")}
-          </Link>
+      {mobileOpen && (
+        <div className="lg:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4 bg-surface-darker text-white">
+          {area !== "gateway" && (
+            <Link href="/" onClick={() => setMobileOpen(false)}>
+              {t("nav.back")}
+            </Link>
+          )}
           {areaLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-            >
+            <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
               {link.label}
             </Link>
           ))}
+          <a
+            href={siteConfig.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2"
+          >
+            <InstagramIcon size={16} /> Instagram
+          </a>
         </div>
       )}
     </header>

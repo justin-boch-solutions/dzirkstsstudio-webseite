@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/lib/config";
+import FooterCredit from "@/components/FooterCredit";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -69,23 +70,20 @@ export default function Footer() {
                   {t("footer.privacy")}
                 </Link>
               </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event("open-cookie-settings"))}
+                  className="text-white/55 hover:text-white transition-colors text-left"
+                >
+                  {t("footer.cookies")}
+                </button>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between gap-2 text-sm text-white/40">
-          <p>
-            &copy; {new Date().getFullYear()} {siteConfig.name}. {t("footer.rights")}
-          </p>
-          <a
-            href={siteConfig.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-          >
-            Instagram
-          </a>
-        </div>
+        <FooterCredit />
       </div>
     </footer>
   );

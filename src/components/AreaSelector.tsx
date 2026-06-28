@@ -5,26 +5,28 @@ import { motion } from "framer-motion";
 import { ArrowRight, Camera, Zap } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const cards = [
+const panels = [
   {
     href: "/agentur",
     labelKey: "gateway.card.media.label",
     titleKey: "gateway.card.media.title",
     descKey: "gateway.card.media.desc",
+    previewKey: "gateway.panel.media.preview",
     icon: Camera,
-    accent: "from-amber-500/20 to-rose-500/10 hover:from-amber-500/30",
-    border: "hover:border-amber-400/50",
-    iconBg: "bg-amber-500/20 text-amber-700",
+    gradient: "from-amber-500/30 via-rose-500/20 to-orange-600/10",
+    hoverBorder: "group-hover:border-amber-400/60",
+    iconWrap: "bg-amber-500/25 text-amber-900",
   },
   {
     href: "/elektro",
     labelKey: "gateway.card.elektro.label",
     titleKey: "gateway.card.elektro.title",
     descKey: "gateway.card.elektro.desc",
+    previewKey: "gateway.panel.elektro.preview",
     icon: Zap,
-    accent: "from-sky-500/20 to-yellow-400/10 hover:from-sky-500/30",
-    border: "hover:border-sky-400/50",
-    iconBg: "bg-sky-500/20 text-sky-800",
+    gradient: "from-sky-500/30 via-cyan-400/20 to-blue-600/10",
+    hoverBorder: "group-hover:border-sky-400/60",
+    iconWrap: "bg-sky-500/25 text-sky-900",
   },
 ] as const;
 
@@ -32,48 +34,50 @@ export default function AreaSelector() {
   const { t } = useLanguage();
 
   return (
-    <div className="grid gap-5">
-      {cards.map((card, i) => {
-        const Icon = card.icon;
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+      {panels.map((panel, i) => {
+        const Icon = panel.icon;
         return (
           <motion.div
-            key={card.href}
-            initial={{ opacity: 0, x: -24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 + i * 0.12, duration: 0.6 }}
+            key={panel.href}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 + i * 0.1 }}
+            className="min-h-[220px] md:min-h-[280px]"
           >
-            <Link href={card.href} className="block group">
-              <div
-                className={`relative overflow-hidden rounded-2xl border border-black/10 bg-gradient-to-br ${card.accent} ${card.border} p-6 md:p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl`}
+            <Link href={panel.href} className="group block h-full">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                className={`relative h-full overflow-hidden rounded-3xl border border-black/10 bg-gradient-to-br ${panel.gradient} ${panel.hoverBorder} p-6 md:p-7 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-shadow duration-500`}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 shimmer-line" />
-                <div className="relative flex items-start justify-between gap-4">
-                  <div>
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/45">
-                      {t(card.labelKey)}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-black mt-2 mb-2">
-                      {t(card.titleKey)}
-                    </h3>
-                    <p className="text-sm md:text-base text-muted max-w-sm">
-                      {t(card.descKey)}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-center gap-3 shrink-0">
-                    <span
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center ${card.iconBg}`}
-                    >
-                      <Icon size={22} />
-                    </span>
-                    <span className="w-11 h-11 rounded-full border border-black/15 flex items-center justify-center group-hover:bg-foreground group-hover:text-white transition-all duration-300">
-                      <ArrowRight
-                        size={18}
-                        className="group-hover:-rotate-45 transition-transform"
-                      />
-                    </span>
-                  </div>
+                <div className="relative">
+                  <span className={`inline-flex w-11 h-11 rounded-2xl items-center justify-center mb-4 ${panel.iconWrap}`}>
+                    <Icon size={22} />
+                  </span>
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/45 block mb-1">
+                    {t(panel.labelKey)}
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-black leading-tight">
+                    {t(panel.titleKey)}
+                  </h3>
                 </div>
-              </div>
+                <div className="relative mt-4">
+                  <p className="text-sm text-muted mb-3 line-clamp-2 group-hover:line-clamp-none transition-all">
+                    {t(panel.descKey)}
+                  </p>
+                  <p className="text-xs font-medium text-foreground/50 mb-4 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-500 overflow-hidden">
+                    {t(panel.previewKey)}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold">
+                    {t("gateway.enter")}
+                    <span className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center group-hover:bg-foreground group-hover:text-white transition-colors">
+                      <ArrowRight size={16} className="group-hover:-rotate-45 transition-transform" />
+                    </span>
+                  </span>
+                </div>
+              </motion.div>
             </Link>
           </motion.div>
         );

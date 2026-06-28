@@ -5,6 +5,8 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import AreaSelector from "@/components/AreaSelector";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import HeroContactBar from "@/components/HeroContactBar";
+import SiteFooter from "@/components/SiteFooter";
 import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/lib/config";
 
@@ -36,9 +38,15 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-base md:text-lg text-muted leading-relaxed mb-10">
+            <p className="text-base md:text-lg text-muted leading-relaxed mb-6">
               {t("gateway.description")}
             </p>
+
+            <p className="text-xs font-bold tracking-[0.15em] uppercase text-foreground/45 mb-8">
+              {t("hero.role")}
+            </p>
+
+            <HeroContactBar variant="light" className="mb-10" />
 
             <AreaSelector />
           </motion.div>
@@ -69,13 +77,18 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.7 }}
           >
-            <p className="text-sm font-bold tracking-wide">{t("brand.slogan")}</p>
-            <p className="text-xs text-white/60 mt-1 uppercase tracking-wider">
-              {t("brand.slogan.sub")}
-            </p>
+            <p className="text-sm font-bold tracking-wide">{siteConfig.name}</p>
+            <p className="text-xs text-white/50 mt-1">{t("hero.role")}</p>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="text-xs text-accent-warm mt-3 inline-block hover:underline"
+            >
+              {siteConfig.email}
+            </a>
           </motion.div>
         </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

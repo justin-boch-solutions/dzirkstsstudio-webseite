@@ -1,7 +1,9 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { detectLanguageFromLocation, type AppLanguage } from "@/lib/detect-language";
+import { detectLanguageFromBrowser, type AppLanguage } from "@/lib/detect-language";
+import { hasFunctionalConsent } from "@/lib/cookie-consent";
+import { extraTranslations } from "@/lib/extra-translations";
 
 type Language = AppLanguage;
 
@@ -47,9 +49,9 @@ const translations: Translations = {
     lv: "Viena Platforma.",
   },
   "gateway.description": {
-    de: "Warum findest du hier Social Media Management und Elektrotechnik auf derselben Seite? Weil ich in beiden Bereichen professionell arbeite. In Deutschland habe ich Elektrotechnik gelernt – in Lettland baue ich mein Studio für Fotografie und Social Media auf. Statt zwei getrennte Webseiten zu pflegen, habe ich alles unter Dzirksts Studio zusammengeführt. Wähle einfach den Bereich, für den du heute hier bist.",
-    en: "Why do you find social media management and electrical work on the same website? Because I work professionally in both fields. I trained as an electrician in Germany and am building my photography and social media studio in Latvia. Instead of maintaining two separate websites, everything lives under Dzirksts Studio. Simply choose the area you need today.",
-    lv: "Kāpēc vienā vietnē ir sociālo mediju vadība un elektrotehnika? Jo es profesionāli strādāju abās jomās. Vācijā esmu apguvis elektrotehniku – Latvijā veidoju savu fotogrāfijas un sociālo mediju studiju. Tā vietā, lai uzturētu divas atsevišķas vietnes, viss ir apvienots zem Dzirksts Studio. Vienkārši izvēlies jomu, kas tev šodien ir aktuāla.",
+    de: "Warum findest du hier Social Media Management und Elektrotechnik auf derselben Seite? Weil ich in beiden Bereichen professionell arbeite. In Deutschland habe ich Elektrotechnik gelernt – in Lettland setze ich heute Fotografie, Social Media und Elektrotechnik um. Statt zwei getrennte Webseiten zu pflegen, habe ich alles unter Dzirksts Studio zusammengeführt. Wähle einfach den Bereich, für den du heute hier bist.",
+    en: "Why do you find social media management and electrical work on the same website? Because I work professionally in both fields. I trained as an electrician in Germany and now deliver photography, social media and electrical services in Latvia. Instead of maintaining two separate websites, everything lives under Dzirksts Studio. Simply choose the area you need today.",
+    lv: "Kāpēc vienā vietnē ir sociālo mediju vadība un elektrotehnika? Jo es profesionāli strādāju abās jomās. Vācijā esmu apguvis elektrotehniku – Latvijā šodien nodrošinu fotogrāfiju, sociālos medijus un elektrotehniku. Tā vietā, lai uzturētu divas atsevišķas vietnes, viss ir apvienots zem Dzirksts Studio. Vienkārši izvēlies jomu, kas tev šodien ir aktuāla.",
   },
   "gateway.card.media.label": {
     de: "01 · Kreativ",
@@ -158,9 +160,9 @@ const translations: Translations = {
     lv: "Kā notiek sadarbība",
   },
   "agency.process.desc": {
-    de: "Kein Portfolio nötig – du siehst vorher genau, wie ich arbeite und was du bekommst.",
-    en: "No portfolio needed – you'll see exactly how I work and what you get before we start.",
-    lv: "Portfolio nav nepieciešams – tu redzēsi, kā es strādāju un ko saņemsi pirms sākuma.",
+    de: "Du siehst vorher genau, wie ich arbeite und was du bekommst.",
+    en: "You'll see exactly how I work and what you get before we start.",
+    lv: "Tu redzēsi, kā es strādāju un ko saņemsi pirms sākuma.",
   },
   "agency.process.step1.title": {
     de: "Kennenlernen",
@@ -228,19 +230,19 @@ const translations: Translations = {
     lv: "Tiešs kontakts – bez rindas gaidīšanas",
   },
   "agency.early.title": {
-    de: "Gerade am Start – du profitierst",
-    en: "Just getting started – you benefit",
-    lv: "Tikko sāku – tu iegūsti",
+    de: "Ein Ansprechpartner. Alles aus einer Hand.",
+    en: "One contact. Everything covered.",
+    lv: "Viens kontakts. Viss no vienas rokas.",
   },
   "agency.early.desc": {
-    de: "Ich baue mein Studio gerade auf. Statt ausgefüllter Referenzen bekommst du als einer der ersten Kunden volle Aufmerksamkeit, flexible Pakete und fairen Einstiegspreis. Ehrlich, direkt, ohne leere Versprechen.",
-    en: "I'm building my studio right now. Instead of a full reference list, you get full attention, flexible packages and a fair entry price as one of my first clients. Honest, direct, no empty promises.",
-    lv: "Es tieši tagad veidoju savu studiju. Tā vietā, lai rādītu pilnu referenču sarakstu, kā viens no pirmajiem klientiem tu saņem pilnu uzmanību, elastīgus paketes un godīgu sākuma cenu.",
+    de: "Strategie, Content und Fotografie kommen bei mir nicht aus der Agentur-Schublade, sondern aus einem klaren Plan – mit direktem Kontakt von der ersten Idee bis zum fertigen Post.",
+    en: "Strategy, content and photography don't come from an agency template – they come from a clear plan, with direct contact from the first idea to the finished post.",
+    lv: "Stratēģija, saturs un fotogrāfija nāk ne no aģentūras veidnes, bet no skaidra plāna – ar tiešu kontaktu no pirmās idejas līdz gatavam ierakstam.",
   },
   "agency.early.cta": {
-    de: "Als Erstkunde anfragen",
-    en: "Inquire as a founding client",
-    lv: "Pieteikties kā pirmais klients",
+    de: "Projekt besprechen",
+    en: "Discuss your project",
+    lv: "Apspriest projektu",
   },
 
   "elektro.badge": {
@@ -267,6 +269,21 @@ const translations: Translations = {
     de: "Anfrage senden",
     en: "Send inquiry",
     lv: "Nosūtīt pieprasījumu",
+  },
+  "elektro.hero.chip1": {
+    de: "DE-Ausbildung",
+    en: "German training",
+    lv: "Vācu izglītība",
+  },
+  "elektro.hero.chip2": {
+    de: "Latvija",
+    en: "Latvia",
+    lv: "Latvija",
+  },
+  "elektro.hero.chip3": {
+    de: "Privat & Gewerbe",
+    en: "Private & commercial",
+    lv: "Privāti & komerciāli",
   },
   "elektro.services.title": {
     de: "Leistungen",
@@ -333,12 +350,22 @@ const translations: Translations = {
   "footer.areas": { de: "Bereiche", en: "Areas", lv: "Jomas" },
   "footer.legal": { de: "Rechtliches", en: "Legal", lv: "Juridiski" },
   "footer.impressum": { de: "Impressum", en: "Imprint", lv: "Impresums" },
-  "footer.privacy": { de: "Datenschutz", en: "Privacy", lv: "Privātums" },
+  "footer.privacy": {
+    de: "Datenschutz",
+    en: "Privacy policy",
+    lv: "Privātuma politika",
+  },
+  "footer.cookies": {
+    de: "Cookie-Einstellungen",
+    en: "Cookie settings",
+    lv: "Sīkdatņu iestatījumi",
+  },
   "footer.rights": {
     de: "Alle Rechte vorbehalten.",
     en: "All rights reserved.",
     lv: "Visas tiesības aizsargātas.",
   },
+  ...extraTranslations,
 };
 
 interface LanguageContextType {
@@ -352,35 +379,52 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("de");
+  const [language, setLanguageState] = useState<Language>("lv");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    async function initLanguage() {
-      const manual = localStorage.getItem("lang_manual") === "true";
+    function applyLanguage() {
+      const canPersist = hasFunctionalConsent();
+      const manual =
+        canPersist && localStorage.getItem("lang_manual") === "true";
       const savedLang = localStorage.getItem("app_lang") as Language;
 
-      if (manual && savedLang && ["de", "en", "lv"].includes(savedLang)) {
+      if (
+        manual &&
+        savedLang &&
+        ["de", "en", "lv"].includes(savedLang)
+      ) {
         setLanguageState(savedLang);
-      } else {
-        const detected = await detectLanguageFromLocation();
-        setLanguageState(detected);
+        return;
+      }
+
+      const detected = detectLanguageFromBrowser();
+      setLanguageState(detected);
+
+      if (canPersist) {
         localStorage.setItem("app_lang", detected);
       }
-      setMounted(true);
     }
 
-    initLanguage();
+    applyLanguage();
+    setMounted(true);
+
+    window.addEventListener("cookie-consent-updated", applyLanguage);
+    return () =>
+      window.removeEventListener("cookie-consent-updated", applyLanguage);
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("app_lang", lang);
-    localStorage.setItem("lang_manual", "true");
+
+    if (hasFunctionalConsent()) {
+      localStorage.setItem("app_lang", lang);
+      localStorage.setItem("lang_manual", "true");
+    }
   };
 
   const t = (key: string): string => {
-    if (!mounted) return translations[key]?.de || key;
+    if (!mounted) return translations[key]?.lv || translations[key]?.de || key;
     return translations[key]?.[language] || key;
   };
 

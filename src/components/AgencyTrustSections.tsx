@@ -53,20 +53,20 @@ export default function AgencyTrustSections() {
               {t("agency.deliverables.title")}
             </h2>
           </Reveal>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-4xl">
             {deliverables.map((item, i) => (
-              <Reveal key={item} delay={i * 0.08}>
-                <li className="flex items-start gap-4 rounded-2xl border border-black/10 bg-white/40 p-5">
-                  <span className="mt-0.5 w-7 h-7 rounded-full bg-foreground text-white flex items-center justify-center shrink-0">
+              <Reveal key={item} delay={i * 0.08} className="h-full w-full">
+                <div className="flex h-full min-h-[5.5rem] w-full items-start gap-4 rounded-2xl border border-black/10 bg-white/40 p-5">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-foreground text-white">
                     <Check size={14} strokeWidth={3} />
                   </span>
                   <span className="leading-relaxed text-foreground/80">
                     {t(`agency.deliverables.${item}`)}
                   </span>
-                </li>
+                </div>
               </Reveal>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
