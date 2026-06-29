@@ -54,9 +54,9 @@ const translations: Translations = {
     lv: "Kāpēc vienā vietnē ir sociālo mediju vadība un elektrotehnika? Jo es profesionāli strādāju abās jomās. Vācijā esmu apguvis elektrotehniku – Latvijā šodien nodrošinu fotogrāfiju, sociālos medijus un elektrotehniku. Tā vietā, lai uzturētu divas atsevišķas vietnes, viss ir apvienots zem Dzirksts Studio. Vienkārši izvēlies jomu, kas tev šodien ir aktuāla.",
   },
   "gateway.card.media.label": {
-    de: "01 · Kreativ",
-    en: "01 · Creative",
-    lv: "01 · Radošs",
+    de: "02 · Kreativ",
+    en: "02 · Creative",
+    lv: "02 · Radošs",
   },
   "gateway.card.media.title": {
     de: "Social Media & Fotografie",
@@ -69,9 +69,9 @@ const translations: Translations = {
     lv: "Saturs, stratēģija un vizuālā valoda tavam zīmolam.",
   },
   "gateway.card.elektro.label": {
-    de: "02 · Handwerk",
-    en: "02 · Craft",
-    lv: "02 · Amats",
+    de: "01 · Handwerk",
+    en: "01 · Craft",
+    lv: "01 · Amats",
   },
   "gateway.card.elektro.title": {
     de: "Elektrotechnik",

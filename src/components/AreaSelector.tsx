@@ -7,17 +7,6 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const panels = [
   {
-    href: "/agentur",
-    labelKey: "gateway.card.media.label",
-    titleKey: "gateway.card.media.title",
-    descKey: "gateway.card.media.desc",
-    previewKey: "gateway.panel.media.preview",
-    icon: Camera,
-    gradient: "from-amber-500/30 via-rose-500/20 to-orange-600/10",
-    hoverBorder: "group-hover:border-amber-400/60",
-    iconWrap: "bg-amber-500/25 text-amber-900",
-  },
-  {
     href: "/elektro",
     labelKey: "gateway.card.elektro.label",
     titleKey: "gateway.card.elektro.title",
@@ -27,6 +16,17 @@ const panels = [
     gradient: "from-sky-500/30 via-cyan-400/20 to-blue-600/10",
     hoverBorder: "group-hover:border-sky-400/60",
     iconWrap: "bg-sky-500/25 text-sky-900",
+  },
+  {
+    href: "/agentur",
+    labelKey: "gateway.card.media.label",
+    titleKey: "gateway.card.media.title",
+    descKey: "gateway.card.media.desc",
+    previewKey: "gateway.panel.media.preview",
+    icon: Camera,
+    gradient: "from-amber-500/30 via-rose-500/20 to-orange-600/10",
+    hoverBorder: "group-hover:border-amber-400/60",
+    iconWrap: "bg-amber-500/25 text-amber-900",
   },
 ] as const;
 
