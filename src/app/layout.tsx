@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import HtmlLang from "@/components/HtmlLang";
 import SiteChrome from "@/components/SiteChrome";
+import MotionProvider from "@/components/MotionProvider";
 import { siteConfig } from "@/lib/config";
 
 const inter = Inter({
@@ -52,8 +53,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col text-foreground overflow-x-hidden selection:bg-accent-warm selection:text-white">
         <LanguageProvider>
           <HtmlLang />
-          <SiteChrome />
-          {children}
+          <MotionProvider>
+            <SiteChrome />
+            {children}
+          </MotionProvider>
         </LanguageProvider>
       </body>
     </html>

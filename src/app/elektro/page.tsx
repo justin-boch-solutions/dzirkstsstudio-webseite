@@ -28,7 +28,7 @@ export default function ElektroPage() {
     <>
       <AnimatedBackground variant="elektro" />
       <Header area="elektro" />
-      <main className="min-h-screen pt-20">
+      <main className="min-h-screen pt-[var(--header-height)]">
         <section className="section-dark relative overflow-hidden py-20 md:py-28">
           <div className="container mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">

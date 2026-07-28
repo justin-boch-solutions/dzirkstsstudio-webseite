@@ -114,6 +114,53 @@ export default function CookieBanner() {
     );
   }
 
+  if (!showDetails) {
+    // Simple initial notice: a slim, non-blocking bottom bar so it doesn't
+    // dim or cover the page content on first visit.
+    return (
+      <div className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6">
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col gap-4 overflow-hidden rounded-2xl border border-white/10 bg-[#111] p-5 text-white shadow-2xl sm:flex-row sm:items-center sm:gap-6 sm:p-6">
+          <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-accent-warm to-accent-cool" />
+
+          <p className="text-sm leading-relaxed text-white/70">
+            {t("cookies.intro")}{" "}
+            <Link
+              href="/datenschutz"
+              className="text-white underline decoration-white/30 underline-offset-2 hover:decoration-white"
+            >
+              {t("footer.privacy")}
+            </Link>
+            .
+          </p>
+
+          <div className="flex flex-col gap-2 sm:flex-row sm:shrink-0">
+            <button
+              type="button"
+              onClick={acceptEssential}
+              className="rounded-full border border-white/15 px-4 py-2.5 text-sm font-medium whitespace-nowrap text-white/80 transition-colors hover:bg-white/5"
+            >
+              {t("cookies.essentialOnly")}
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowDetails(true)}
+              className="rounded-full border border-white/15 px-4 py-2.5 text-sm font-medium whitespace-nowrap text-white transition-colors hover:bg-white/5"
+            >
+              {t("cookies.customize")}
+            </button>
+            <button
+              type="button"
+              onClick={acceptAll}
+              className="rounded-full bg-white px-4 py-2.5 text-sm font-bold whitespace-nowrap text-black transition-transform hover:scale-[1.02]"
+            >
+              {t("cookies.acceptAll")}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 z-[100] flex max-h-[100dvh] items-end justify-center bg-black/60 p-4 backdrop-blur-sm md:items-center">
       <div className="relative flex max-h-[90dvh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#111] text-white shadow-2xl">
@@ -132,34 +179,32 @@ export default function CookieBanner() {
             .
           </p>
 
-          {showDetails ? (
-            <div className="mb-8 space-y-4 border-t border-white/10 pt-6">
-              <CookieToggle
-                title={t("cookies.essential.title")}
-                description={t("cookies.essential.desc")}
-                enabled
-                locked
-              />
-              <CookieToggle
-                title={t("cookies.functional.title")}
-                description={t("cookies.functional.desc")}
-                enabled={preferences.functional}
-                onToggle={() => togglePreference("functional")}
-              />
-              <CookieToggle
-                title={t("cookies.analytics.title")}
-                description={t("cookies.analytics.desc")}
-                enabled={preferences.analytics}
-                onToggle={() => togglePreference("analytics")}
-              />
-              <CookieToggle
-                title={t("cookies.marketing.title")}
-                description={t("cookies.marketing.desc")}
-                enabled={preferences.marketing}
-                onToggle={() => togglePreference("marketing")}
-              />
-            </div>
-          ) : null}
+          <div className="mb-8 space-y-4 border-t border-white/10 pt-6">
+            <CookieToggle
+              title={t("cookies.essential.title")}
+              description={t("cookies.essential.desc")}
+              enabled
+              locked
+            />
+            <CookieToggle
+              title={t("cookies.functional.title")}
+              description={t("cookies.functional.desc")}
+              enabled={preferences.functional}
+              onToggle={() => togglePreference("functional")}
+            />
+            <CookieToggle
+              title={t("cookies.analytics.title")}
+              description={t("cookies.analytics.desc")}
+              enabled={preferences.analytics}
+              onToggle={() => togglePreference("analytics")}
+            />
+            <CookieToggle
+              title={t("cookies.marketing.title")}
+              description={t("cookies.marketing.desc")}
+              enabled={preferences.marketing}
+              onToggle={() => togglePreference("marketing")}
+            />
+          </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <button
@@ -170,33 +215,13 @@ export default function CookieBanner() {
               {t("cookies.acceptAll")}
             </button>
 
-            {showDetails ? (
-              <button
-                type="button"
-                onClick={saveCustom}
-                className="order-2 w-full flex-1 rounded-full border border-white/15 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
-              >
-                {t("cookies.saveSelection")}
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setShowDetails(true)}
-                className="order-2 w-full flex-1 rounded-full border border-white/15 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
-              >
-                {t("cookies.customize")}
-              </button>
-            )}
-
-            {!showDetails ? (
-              <button
-                type="button"
-                onClick={acceptEssential}
-                className="order-3 w-full flex-1 rounded-full border border-white/15 px-4 py-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/5 sm:order-1"
-              >
-                {t("cookies.essentialOnly")}
-              </button>
-            ) : null}
+            <button
+              type="button"
+              onClick={saveCustom}
+              className="order-2 w-full flex-1 rounded-full border border-white/15 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
+            >
+              {t("cookies.saveSelection")}
+            </button>
           </div>
         </div>
       </div>

@@ -30,26 +30,26 @@ export default function AnimatedBackground({
       <div className="absolute inset-0 bg-background" />
 
       <motion.div
-        className="absolute -top-1/4 -left-1/4 h-[55vh] w-[55vw] rounded-full blur-[100px]"
+        className="absolute -top-1/4 -left-1/4 h-[55vh] w-[55vw] rounded-full blur-2xl md:blur-[100px]"
         style={{ background: accent }}
         animate={{ x: [0, 80, -40, 0], y: [0, 50, -30, 0], scale: [1, 1.15, 0.95, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -bottom-1/4 -right-1/4 h-[50vh] w-[50vw] rounded-full blur-[120px]"
+        className="absolute -bottom-1/4 -right-1/4 h-[50vh] w-[50vw] rounded-full blur-2xl md:blur-[120px]"
         style={{ background: accent2 }}
         animate={{ x: [0, -70, 40, 0], y: [0, -60, 30, 0], scale: [1, 0.9, 1.1, 1] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 h-[40vh] w-[40vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[90px] opacity-60"
+        className="absolute top-1/2 left-1/2 hidden h-[40vh] w-[40vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[90px] opacity-60 md:block"
         style={{ background: "rgba(255,255,255,0.12)" }}
         animate={{ rotate: [0, 180, 360] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
 
       <motion.div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 hidden opacity-[0.04] md:block"
         style={{
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.5) 1px, transparent 1px)",

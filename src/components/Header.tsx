@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Globe, Menu, X } from "lucide-react";
@@ -16,7 +17,31 @@ interface HeaderProps {
 export default function Header({ area = "gateway" }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const { language, setLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Keep --header-height in sync with the header's natural (unscrolled) size so
+  // page content can offset by exactly that much instead of a hardcoded value.
+  useLayoutEffect(() => {
+    if (scrolled) return;
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => {
+      document.documentElement.style.setProperty("--header-height", `${el.offsetHeight}px`);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [scrolled]);
 
   const handleLangChange = (lang: "de" | "en" | "lv") => {
     setLanguage(lang);
@@ -58,16 +83,27 @@ export default function Header({ area = "gateway" }: HeaderProps) {
         : "bg-foreground";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-panel-dark border-b border-white/10">
-      <div className={`h-1 w-full ${accentBar}`} />
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-4 py-3 md:py-4">
+    <header
+      ref={headerRef}
+      className={`fixed top-0 left-0 right-0 z-50 glass-panel-dark border-b border-white/10 transition-all duration-300 ${
+        scrolled ? "shadow-lg" : ""
+      }`}
+    >
+      <div className={`w-full transition-all duration-300 ${accentBar} ${scrolled ? "h-0.5" : "h-1"}`} />
+      <div
+        className={`container mx-auto px-6 md:px-12 flex items-center justify-between gap-4 transition-all duration-300 ${
+          scrolled ? "py-2" : "py-3 md:py-4"
+        }`}
+      >
         <Link href="/" className="flex items-center gap-3 md:gap-5 group min-w-0">
           <Image
             src="/logo.svg"
             alt="Dzirksts Studio Logo"
             width={300}
             height={200}
-            className="w-20 md:w-28 h-auto shrink-0 drop-shadow-md group-hover:scale-[1.02] transition-transform duration-300"
+            className={`h-auto shrink-0 drop-shadow-md group-hover:scale-[1.02] transition-all duration-300 ${
+              scrolled ? "w-14 md:w-20" : "w-20 md:w-28"
+            }`}
             priority
           />
           <span className="hidden sm:block h-10 w-px bg-white/20 shrink-0" />
@@ -162,34 +198,61 @@ export default function Header({ area = "gateway" }: HeaderProps) {
             <Globe size={14} />
             {language}
           </button>
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
+          >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4 bg-surface-darker text-white">
-          {area !== "gateway" && (
-            <Link href="/" onClick={() => setMobileOpen(false)}>
-              {t("nav.back")}
-            </Link>
-          )}
-          {areaLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
-              {link.label}
-            </Link>
-          ))}
-          <a
-            href={siteConfig.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="lg:hidden border-t border-white/10 bg-surface-darker text-white"
           >
-            <InstagramIcon size={16} /> Instagram
-          </a>
-        </div>
-      )}
+            <div className="flex flex-col gap-1 px-3 py-3">
+              {area !== "gateway" && (
+                <Link
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-white/10"
+                >
+                  {t("nav.back")}
+                </Link>
+              )}
+              {areaLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-white/10"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <a
+                href={siteConfig.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-white/10"
+              >
+                <InstagramIcon size={16} /> Instagram
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

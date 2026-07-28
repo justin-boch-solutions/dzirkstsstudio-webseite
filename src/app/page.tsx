@@ -18,7 +18,7 @@ export default function Home() {
       <AnimatedBackground variant="neutral" />
       <Header area="gateway" />
 
-      <main className="min-h-screen flex flex-col lg:flex-row pt-20">
+      <main className="min-h-screen flex flex-col lg:flex-row pt-[var(--header-height)]">
         <section className="section-warm w-full lg:w-[52%] min-h-[55vh] lg:min-h-screen flex flex-col justify-center px-8 md:px-14 lg:px-20 py-12 lg:py-24 relative overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
