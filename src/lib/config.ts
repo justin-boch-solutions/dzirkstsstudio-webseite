@@ -1,10 +1,10 @@
 export const siteConfig = {
   name: "Dzirksts Studio",
   legalName: "Dzirksts Studio, SIA",
-  url: "https://dzirkstsstudio.com",
+  url: "https://www.dzirkstsstudio.com",
   email: "kontakti@dzirkstsstudio.com",
-  phone: "+371 694696",
-  whatsapp: "371694696",
+  phone: "+371 20694696",
+  whatsapp: "37120694696",
   location: "Rīga, Latvija",
   address: {
     street: "Ģertrūdes iela 53 – 7",

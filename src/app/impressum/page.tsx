@@ -1,53 +1,41 @@
-import type { Metadata } from "next";
-import { formatLegalAddress, siteConfig } from "@/lib/config";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Impresums | Dzirksts Studio",
-  description:
-    "Juridiskā informācija par SIA Dzirksts Studio – reģistrācijas dati, kontakti un pārstāvības tiesības.",
-  alternates: {
-    canonical: `${siteConfig.url}/impressum`,
-  },
-};
+import { formatLegalAddress, siteConfig } from "@/lib/config";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ImpressumPage() {
+  const { t } = useLanguage();
   const { legal } = siteConfig;
 
   return (
     <main className="min-h-screen section-light pt-32 pb-20">
       <div className="container mx-auto px-6 md:px-12 max-w-3xl">
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-muted mb-4">
-          Juridiskā informācija
+          {t("impressum.badge")}
         </p>
-        <h1 className="text-4xl font-black mb-4">Impresums</h1>
-        <p className="text-sm text-muted mb-10 leading-relaxed">
-          Saskaņā ar Latvijas Republikas Informācijas sabiedrības pakalpojumu likumu
-          un Patērētāju tiesību aizsardzības likumu sniedzam obligāto informāciju par
-          pakalpojumu sniedzēju.
-        </p>
+        <h1 className="text-4xl font-black mb-4">{t("impressum.title")}</h1>
+        <p className="text-sm text-muted mb-10 leading-relaxed">{t("impressum.intro")}</p>
 
         <div className="space-y-8 text-muted leading-relaxed">
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              1. Pakalpojumu sniedzējs
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s1.heading")}</h2>
             <p className="border-l-2 border-black/15 pl-4">
               <strong>{siteConfig.legalName}</strong>
               <br />
-              Tiesiskā forma: sabiedrība ar ierobežotu atbildību (SIA)
+              {t("impressum.legalForm")}
               <br />
-              Juridiskā adrese: {formatLegalAddress()}
+              {t("impressum.address")}: {formatLegalAddress()}
               <br />
-              Reģistrācijas numurs: {legal.registrationNumber}
+              {t("impressum.regNumber")}: {legal.registrationNumber}
               <br />
-              Reģistrēts: {legal.registeredAt} ({legal.register})
+              {t("impressum.registeredAt")}: {legal.registeredAt} ({legal.register})
               <br />
-              Pamatkapitāls: {legal.shareCapital}
+              {t("impressum.shareCapital")}: {legal.shareCapital}
               <br />
-              SEPA identifikators: {legal.sepaId}
+              {t("impressum.sepaId")}: {legal.sepaId}
             </p>
             <p className="mt-3 text-sm">
-              Publiskais ieraksts Uzņēmumu reģistrā:{" "}
+              {t("impressum.registerEntry")}{" "}
               <a
                 href={legal.registerUrl}
                 target="_blank"
@@ -60,16 +48,14 @@ export default function ImpressumPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              2. Kontaktinformācija
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s2.heading")}</h2>
             <p>
-              E-pasts:{" "}
+              {t("impressum.email")}:{" "}
               <a href={`mailto:${siteConfig.email}`} className="underline hover:text-foreground">
                 {siteConfig.email}
               </a>
               <br />
-              Tālrunis:{" "}
+              {t("impressum.phone")}:{" "}
               <a
                 href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
                 className="underline hover:text-foreground"
@@ -77,7 +63,7 @@ export default function ImpressumPage() {
                 {siteConfig.phone}
               </a>
               <br />
-              Tīmekļa vietne:{" "}
+              {t("impressum.website")}:{" "}
               <a href={siteConfig.url} className="underline hover:text-foreground">
                 {siteConfig.url.replace(/^https:\/\//, "")}
               </a>
@@ -85,91 +71,62 @@ export default function ImpressumPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              3. PVN maksātājs
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s3.heading")}</h2>
             <p>
-              PVN maksātāja numurs: <strong>{legal.vatId}</strong>
+              {t("impressum.vatId")}: <strong>{legal.vatId}</strong>
               <br />
-              Reģistrēts PVN maksātāju reģistrā: {legal.vatRegisteredAt}
+              {t("impressum.vatRegisteredAt")}: {legal.vatRegisteredAt}
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              4. Reģistrētā darbība
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s4.heading")}</h2>
             <p>
-              Reģistrētais darbības veids (NACE): {legal.nace}
+              {t("impressum.nace")}: {legal.nace}
               <br />
-              Papildu pakalpojumi šajā tīmekļa vietnē (piemēram, fotogrāfija un sociālo
-              mediju pakalpojumi) tiek piedāvāti, ja tie ir atļauti sabiedrības statūtos un
-              piemērojamajos normatīvajos aktos.
+              {t("impressum.s4.body")}
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              5. Pārstāvības tiesības
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s5.heading")}</h2>
             <p>
-              <strong>{legal.representativeFullName}</strong> – {legal.representativeRole},{" "}
-              {legal.representativeRights}.
+              <strong>{legal.representativeFullName}</strong> – {t("impressum.repRole")},{" "}
+              {t("impressum.repRights")}.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              6. Par saturu atbildīgā persona
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s6.heading")}</h2>
             <p>
-              Par šīs tīmekļa vietnes saturu atbild {legal.representativeFullName},{" "}
-              {legal.representativeRole}, {siteConfig.legalName},{" "}
-              {formatLegalAddress()}.
+              {t("impressum.s6.body", {
+                name: legal.representativeFullName,
+                role: t("impressum.repRole"),
+                legalName: siteConfig.legalName,
+                address: formatLegalAddress(),
+              })}
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              7. Atbildība par saturu
-            </h2>
-            <p>
-              {siteConfig.legalName} ir atbildīga par pašu radīto saturu šajā tīmekļa
-              vietnē saskaņā ar Latvijas Republikas normatīvajiem aktiem. Mēs neesam
-              pienākumā uzraudzīt trešo personu nosūtīto vai saglabāto informāciju, ja
-              nav zināms par nelikumīgu darbību. Pienākums dzēst vai bloķēt nelikumīgas
-              informācijas izmantošanu paliek spēkā saskaņā ar vispārējiem tiesību aktiem.
-            </p>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s7.heading")}</h2>
+            <p>{t("impressum.s7.body", { legalName: siteConfig.legalName })}</p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              8. Atbildība par saitēm
-            </h2>
-            <p>
-              Vietnē ir saites uz ārējām tīmekļa vietnēm (piemēram, sociālie tīkli).
-              Mums nav ietekmes uz šo vietņu saturu, tādēļ par to saturu mēs neuzņemamies
-              atbildību. Par ārējās saites saturu atbild attiecīgais pakalpojumu sniedzējs
-              vai operators.
-            </p>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s8.heading")}</h2>
+            <p>{t("impressum.s8.body")}</p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">9. Autortiesības</h2>
-            <p>
-              Vietnē publicētie teksti, attēli, dizains un citi materiāli ir aizsargāti ar
-              autortiesībām. Jebkāda to izmantošana bez {siteConfig.legalName} vai attiecīgo
-              tiesību subjektu iepriekšējas rakstiskas piekrišanas ir aizliegta, izņemot
-              gadījumus, ko pieļauj normatīvie akti.
-            </p>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s9.heading")}</h2>
+            <p>{t("impressum.s9.body", { legalName: siteConfig.legalName })}</p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              10. Strīdu risināšana patērētājiem
-            </h2>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s10.heading")}</h2>
             <p>
-              Eiropas Komisija nodrošina tiešsaistes strīdu risināšanas platformu (ODR):{" "}
+              {t("impressum.s10.body")}{" "}
               <a
                 href="https://ec.europa.eu/consumers/odr"
                 target="_blank"
@@ -178,25 +135,16 @@ export default function ImpressumPage() {
               >
                 https://ec.europa.eu/consumers/odr
               </a>
-              . Mēs neesam pienākumā un nevaram piedalīties strīdu risināšanas procesā
-              patērētāju šķīrējtiesā.
+              . {t("impressum.s10.body2")}
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-foreground mb-2">
-              11. Piemērojamie tiesību akti
-            </h2>
-            <p>
-              Uz attiecībām attiecas Latvijas Republikas normatīvie akti un Eiropas Savienības
-              tiesību akti. Strīdu gadījumā strīds vispirms risināms sarunu ceļā; ja vienošanās
-              netiek panākta, strīds tiek risināts Latvijas Republikas kompetentajā tiesā.
-            </p>
+            <h2 className="text-lg font-bold text-foreground mb-2">{t("impressum.s11.heading")}</h2>
+            <p>{t("impressum.s11.body")}</p>
           </section>
 
-          <p className="text-sm pt-4 border-t border-black/10">
-            Spēkā: 2026. gada jūnijs · Dati atbilst publiskajam ierakstam Uzņēmumu reģistrā
-          </p>
+          <p className="text-sm pt-4 border-t border-black/10">{t("impressum.footer")}</p>
         </div>
       </div>
     </main>

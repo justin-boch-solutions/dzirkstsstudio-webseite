@@ -4,6 +4,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { detectLanguageFromBrowser, type AppLanguage } from "@/lib/detect-language";
 import { hasFunctionalConsent } from "@/lib/cookie-consent";
 import { extraTranslations } from "@/lib/extra-translations";
+import { impressumTranslations } from "@/lib/legal-content/impressum";
+import { datenschutzTranslations } from "@/lib/legal-content/datenschutz";
 
 type Language = AppLanguage;
 
@@ -366,12 +368,14 @@ const translations: Translations = {
     lv: "Visas tiesības aizsargātas.",
   },
   ...extraTranslations,
+  ...impressumTranslations,
+  ...datenschutzTranslations,
 };
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string, vars?: Record<string, string>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
@@ -380,7 +384,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("lv");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     function applyLanguage() {
@@ -407,7 +410,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
 
     applyLanguage();
-    setMounted(true);
 
     window.addEventListener("cookie-consent-updated", applyLanguage);
     return () =>
@@ -423,9 +425,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const t = (key: string): string => {
-    if (!mounted) return translations[key]?.lv || translations[key]?.de || key;
-    return translations[key]?.[language] || key;
+  const t = (key: string, vars?: Record<string, string>): string => {
+    const raw = translations[key]?.[language] || translations[key]?.de || key;
+    if (!vars) return raw;
+    return Object.entries(vars).reduce(
+      (text, [name, value]) => text.replaceAll(`{{${name}}}`, value),
+      raw,
+    );
   };
 
   return (
